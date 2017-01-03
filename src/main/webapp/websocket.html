@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>WebSocket Client</title>
+</head>
+<body>
+	<div>
+		<input type="button" id="btnConnection" value="Open Connection" /> 
+		<input type="button" id="btnClose" value="Close Connection" /> 
+		<input type="button" id="btnSend" value="Send Message" />
+	</div>
+	<script src="js/jquery-1.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var socket;
+		$("#btnConnection").click(function() {
+			if (typeof (WebSocket) == "undefined") {
+				alert("Your browser not support WebSocket");
+				return;
+			}
+			socket = new WebSocket("ws://localhost:8080/websocket");
+			socket.onopen = function() {
+				alert("Socket Open Connection");
+			};
+			socket.onmessage = function(msg) {
+				alert(msg.data);
+			};
+			socket.onclose = function() {
+				alert("Socket Close Connection");
+			};
+			socket.onerror = function() {
+				alert("Socket Error");
+			}
+		});
+		$("#btnSend").click(function() {
+			socket.send("message from WebSocket Client, " + location.href + ", " + new Date());
+		});
+		$("#btnClose").click(function() {
+			socket.close();
+		});
+	</script>
+</body>
+</html>
