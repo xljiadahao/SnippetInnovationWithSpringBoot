@@ -58,8 +58,12 @@ public class MessageReceiver implements Runnable {
             ex.printStackTrace();
         } finally {
             try {
-                session.close();
-                connection.close();
+                if (session != null) {
+                    session.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
             } catch (JMSException ex) {
                 ex.printStackTrace();
             }
