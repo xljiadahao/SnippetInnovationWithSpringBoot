@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.zxing.WriterException;
+import com.snippet.jwt.qrcode.Merchant;
 import com.snippet.jwt.qrcode.QRCodeGenerator;
 
 @RestController
@@ -75,6 +76,23 @@ public class JsonWebTokenController {
         } catch (Exception e) {
             System.out.println("Verify unpextected error, " + e.getMessage());
             return null;
+        }
+    }
+
+    @RequestMapping(value="/ppverify", method=RequestMethod.GET)
+    @ResponseBody
+    public Merchant ppverify(@RequestParam Map<String, String> allRequestParams) {
+        String jwt = allRequestParams.get("token");
+        try {
+            Merchant merchant = JwtUtil.unsign(jwt, Merchant.class);
+            if (merchant != null) {
+                return merchant;
+            } else {
+                throw new RuntimeException("verification failed");
+            }
+        } catch (Exception e) {
+            System.out.println("Verify unpextected error, " + e.getMessage());
+            throw new RuntimeException("verification failed");
         }
     }
 
