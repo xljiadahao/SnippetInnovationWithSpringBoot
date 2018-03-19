@@ -2,6 +2,7 @@ package com.snippet.jwt;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.google.zxing.WriterException;
+import com.snippet.jwt.qrcode.QRCodeGenerator;
 
 @RestController
 public class JsonWebTokenController {
@@ -45,6 +49,15 @@ public class JsonWebTokenController {
             TokenResponseData tokenResponse = new TokenResponseData();
             tokenResponse.setUserName(userName);
             tokenResponse.setToken(jwt);
+            try {
+                tokenResponse.setQrCode(QRCodeGenerator.generateQRCode(null, null, jwt));
+            } catch (WriterException e) {
+                System.out.println("1 Unpextected error during QR code generation, " + e.getMessage());
+                e.printStackTrace();
+            } catch (IOException e) {
+                System.out.println("2 Unpextected error during QR code generation, " + e.getMessage());
+                e.printStackTrace();
+            }
             Map<String, String> reqParam = new HashMap<String, String>();
             reqParam.put("token", jwt);
             tokenResponse.add(linkTo(methodOn(JsonWebTokenController.class).verify(reqParam)).withRel("verify"));

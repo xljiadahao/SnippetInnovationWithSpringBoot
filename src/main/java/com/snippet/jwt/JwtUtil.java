@@ -29,8 +29,8 @@ public class JwtUtil {
         String jsonString = mapper.writeValueAsString(object);
         claims.put(CUSTOM_CLAIMS, jsonString);
         claims.put(EXPIRATION_TIME, System.currentTimeMillis() + maxAge);
-        claims.put(ISSUER, "auth0");
-        claims.put(SUBJECT, "third party authorization");
+        claims.put(ISSUER, "PayPal");
+        claims.put(SUBJECT, "O2O third party authorization");
         return signer.sign(claims);
     }
     
