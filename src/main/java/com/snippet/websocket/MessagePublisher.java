@@ -56,10 +56,14 @@ public class MessagePublisher {
         }
     }
     
-    public static void main(String[] args) {
-    	MessagePublisher activeMQPublisher = new MessagePublisher();
-        activeMQPublisher.sendMessage("0,XL Producer MSG");
-        System.out.println("Message sent at " + new Date());
-    }
-	
+    /**
+     * comment it for jar to war file conversion, only one main method is allowed in the war file
+     * 
+     * public static void main(String[] args) {
+     *     MessagePublisher activeMQPublisher = new MessagePublisher();
+     *     activeMQPublisher.sendMessage("0,XL Producer MSG");
+     *     System.out.println("Message sent at " + new Date());
+     * }
+     */
+
 }

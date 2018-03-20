@@ -54,7 +54,7 @@ public class QRCodeGenerator {
         }
         int width = image.getWidth();
         int height = image.getHeight();
-        if (Objects.isNull(logoFile) || !logoFile.exists()) {
+        if (logoFile == null || !logoFile.exists()) {
             logoFile = new File(lOGO_DIR);
         }
         Graphics2D g = image.createGraphics();
