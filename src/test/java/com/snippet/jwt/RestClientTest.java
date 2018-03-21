@@ -38,7 +38,12 @@ public class RestClientTest {
                 + "JLXKIlc6X4oc0ism6WnJgnCUmFvvaXu9Lw8c-ByD9Y";
     }
 
-    @Test
+    /**
+     * deploy the war file to the server, 
+     * set service URL above and SSL keystore details in the config.properties,
+     * then enable the Unit Test.
+     */
+    // @Test
     public void restClientTest() throws Exception {
         Merchant merchant = verifyToken(testToken);
         assertEquals(33l, merchant.getId());
