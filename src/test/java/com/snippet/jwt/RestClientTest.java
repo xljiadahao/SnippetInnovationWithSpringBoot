@@ -14,7 +14,7 @@ import org.springframework.web.client.RestOperations;
 import com.snippet.jwt.client.RestClientConfig;
 import com.snippet.jwt.qrcode.Merchant;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+// @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = RestClientConfig.class)
 public class RestClientTest {
 
