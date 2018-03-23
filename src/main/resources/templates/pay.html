@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+<title>In-App Payment Integration</title>
+</head>
+<script type="text/javascript">
+	function pay() {
+		alert("PayPal");
+		window.android.pay("PayPal official site");
+	}
+</script>
+<body>
+<input id="info" style="width: 100%" type="text" value="order ID" /><br/>  
+<input type="button" value="In-App Pay" onclick="pay()" /><br/> 
+</body>
+</html>
