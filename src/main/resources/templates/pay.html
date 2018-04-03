@@ -4,14 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 <title>In-App Payment Integration</title>
 </head>
+<script type="text/javascript" src="../js/jquery-1.4.1.min.js" ></script>
 <script type="text/javascript">
 	function pay() {
-		alert("PayPal");
-		window.android.pay("PayPal official site");
+		var orderId = $("#order").val();
+		alert("Pay with PayPal, " + orderId);
+		window.android.pay(orderId);
 	}
 </script>
 <body>
-<input id="info" style="width: 100%" type="text" value="order ID" /><br/>  
+<input id="order" style="width: 100%" type="text" value="order ID" /><br/>  
 <input type="button" value="In-App Pay" onclick="pay()" /><br/> 
 </body>
 </html>
