@@ -1,6 +1,6 @@
 package com.snippet.jwt;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 import java.io.IOException;
 import java.util.HashMap;

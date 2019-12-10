@@ -1,8 +1,8 @@
 package com.snippet.jwt;
 
-import org.springframework.hateoas.ResourceSupport;
+import org.springframework.hateoas.RepresentationModel;
 
-public class TokenResponseData extends ResourceSupport {
+public class TokenResponseData extends RepresentationModel<TokenResponseData> {
 
     private String userName;
     private String token;

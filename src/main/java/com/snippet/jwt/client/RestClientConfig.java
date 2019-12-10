@@ -21,7 +21,14 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 
-@Configuration
+/**
+ * 
+ * To enable the client, please configure the keystore for the SSL in config.properties
+ * 
+ * @author xulei
+ *
+ */
+// @Configuration
 @PropertySource("classpath:config.properties")
 public class RestClientConfig {
 
